@@ -5,13 +5,23 @@ import json
 
 page = 1
 
+http_proxy  = "http://62.210.69.176:5566"
+https_proxy = "https://62.210.69.176:5566"
+ftp_proxy   = "ftp://62.210.69.176:5566"
 
-while page <1318:
+proxyDict = {
+              "http"  : http_proxy,
+              "https" : https_proxy,
+              "ftp"   : ftp_proxy
+            }
+
+
+while page <740:
 
 
     url = "https://ucf.uscourts.gov/search"
 
-    querystring = {"SelectedCourts":"","CreditorSearch":"","DebtorSearch":"","CaseNumber":"","Amount":"40","EnteredOn":"08/12/2020","page":str(page),"__swhg":["1620060421194,1620060688027,1620060718791","1620060825184"]}
+    querystring = {"SelectedCourts":"","CreditorSearch":"","DebtorSearch":"","CaseNumber":"","Amount":"40","EnteredOn":"12/28/2020","page":str(page),"__swhg":["1620060421194,1620060688027,1620060718791","1620060825184"]}
 
     headers = {
         'sec-ch-ua': "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\", \"Google Chrome\";v=\"90\"",

@@ -1,20 +1,28 @@
 import requests
+from bs4 import BeautifulSoup
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium import webdriver
+import time
 
-url = "https://ucf.uscourts.gov/odata.svc/Creditors(guid'1c207e82-fce2-11ea-a4de-0050569e7a8f')"
+s = requests.session()
 
-headers = {
-    'sec-ch-ua': "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"90\", \"Google Chrome\";v=\"90\"",
-    'accept': "application/json, text/javascript, */*; q=0.01",
-    'x-requested-with': "XMLHttpRequest",
-    'sec-ch-ua-mobile': "?0",
-    'user-agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36",
-    'sec-fetch-site': "same-origin",
-    'sec-fetch-mode': "cors",
-    'sec-fetch-dest': "empty",
-    'cache-control': "no-cache",
-    'postman-token': "46e9f240-3b8d-ded8-0f8b-f03b368ad909"
-    }
+PROXY = "185.198.188.51:8080"
 
-response = requests.request("GET", url, headers=headers)
 
-print(response.text)
+# mail_url = 'https://www.google.com/'
+
+mail_url = 'https://ucf.uscourts.gov/search?SelectedCourts=&CreditorSearch=&DebtorSearch=&CaseNumber=&Amount=40&EnteredOn=08%2F15%2F2020&page=4'
+
+options = webdriver.ChromeOptions()
+options.add_argument("--start-maximized")
+
+chrome_options = Options()
+chrome_options.add_argument("--window-size=1920x1080")
+driver = webdriver.Chrome(options=chrome_options, executable_path=ChromeDriverManager().install())
+
+driver.get(mail_url)
+
+p = driver.current_window_handle
+
+time.sleep(5)
