@@ -16,7 +16,7 @@ proxyDict = {
             }
 
 
-while page <740:
+while page <800:
 
 
     url = "https://ucf.uscourts.gov/search"
@@ -39,6 +39,8 @@ while page <740:
     response = requests.request("GET", url, headers=headers, params=querystring)
     html1 = BeautifulSoup(response.content, 'html.parser')
 
+
+
     trs = html1.find_all('tr')
 
     for tr in trs:
@@ -56,7 +58,7 @@ while page <740:
         debtor_name = ''
         amount = ''
         id = ''
-        scrapedUrl = 'https://ucf.uscourts.gov/search?SelectedCourts=&CreditorSearch=&DebtorSearch=&CaseNumber=&Amount=40&EnteredOn=08%2F15%2F2020&page=' + str(page)
+        scrapedUrl = 'https://ucf.uscourts.gov/search?SelectedCourts=&CreditorSearch=&DebtorSearch=&CaseNumber=&Amount=40&EnteredOn=12%2F28%2F2020&page=' + str(page)
 
         tds = tr.find_all('td')
 
